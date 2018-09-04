@@ -3,8 +3,34 @@ const fs = require('fs');
 // const fs = require('express'); install to use
 // const fs = require('./fs'); created
 
+let  listarTabla = (base, limite = 10) => {
 
-let crearArchivo = base => {
+  return new Promise((resolve, reject) => {
+
+    if (!Number(base)) {
+      reject(`El valor de base introducido "${base}" no es un numero`);
+      return;
+    }
+
+    if (!Number(limite)) {
+      reject(`El valor de limite introducido "${limite}" no es un numero`);
+      return;
+    }
+
+    let data = '';
+
+    for (let i = 1; i <= limite; i++) {
+      data += `${base} * ${i} = ${base * i}\n`;
+    }
+
+    resolve(data)
+
+  });
+
+}
+
+
+let crearArchivo = (base, limite = 10) => {
 
   // creando promesa
   return new Promise((resolve, reject) => {
@@ -16,7 +42,7 @@ let crearArchivo = base => {
 
     let data = '';
 
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= limite; i++) {
       data += `${base} * ${i} = ${base * i}\n`;
     }
 
@@ -33,4 +59,7 @@ let crearArchivo = base => {
 }
 
 // exportar el modulo
-module.exports = { crearArchivo };
+module.exports = { 
+  crearArchivo,
+  listarTabla
+};
