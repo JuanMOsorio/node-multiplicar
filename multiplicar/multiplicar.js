@@ -1,9 +1,14 @@
 // requireds for filesystem
 const fs = require('fs');
+const colors = require('colors');
 // const fs = require('express'); install to use
 // const fs = require('./fs'); created
 
 let  listarTabla = (base, limite = 10) => {
+
+  console.log(`========================`.green);
+  console.log(`=======tabla del ${base}======`.green);
+  console.log(`========================`.green);
 
   return new Promise((resolve, reject) => {
 
